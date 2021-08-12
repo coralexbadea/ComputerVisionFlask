@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -20,6 +20,38 @@
             <img src="{{ url_for('video_feed') }}" width="100%">
         </div>
     </div>
+
+    
+    <div id="place_for_date"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+        setInterval(loadF, 1000);
+        });
+    
+
+        function loadF(){
+            $.ajax({
+              url: "/date",
+              type: "get",
+              //data: {}
+              success: function(response) {
+                $("#place_for_date").html(response);
+              
+              },
+              error: function(xhr) {
+                //Do Something to handle error
+              }
+            });
+        };
+
+
+    </script>
+
 </div>
 </body>
 </html>
+
+
